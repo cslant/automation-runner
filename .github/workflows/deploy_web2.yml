@@ -1,0 +1,34 @@
+name: Deploy CSlant Server - W2
+
+on:
+  workflow_call:
+    inputs:
+      branch:
+        required: true
+        type: string
+    secrets:
+      REMOTE_HOST_WEB_2:
+        required: true
+      REMOTE_USERNAME_WEB_2:
+        required: true
+      REMOTE_PASS_WEB_2:
+        required: true
+      REMOTE_PORT_WEB_2:
+        required: true
+      SCRIPT_RUNNER:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Deploy to Remote Host
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_HOST_WEB_2 }}
+          username: ${{ secrets.REMOTE_USERNAME_WEB_2 }}
+          password: ${{ secrets.REMOTE_PASS_WEB_2 }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.REMOTE_PORT }}
+          script: |
+            ${{ secrets.SCRIPT_RUNNER }}
