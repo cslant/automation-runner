@@ -20,7 +20,7 @@ jobs:
           host: ${{ secrets.REMOTE_HOST_WEB_2 }}
           username: ${{ secrets.REMOTE_USERNAME_WEB_2 }}
           password: ${{ secrets.REMOTE_PASS_WEB_2 }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          port: ${{ secrets.REMOTE_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY_WEB_2 }}
+          port: ${{ secrets.REMOTE_PORT_WEB_2 }}
           script: |
             ${{ inputs.SCRIPT_RUNNER }}
