@@ -9,15 +9,6 @@ on:
       SCRIPT_RUNNER:
         required: true
         type: string
-    secrets:
-      REMOTE_HOST_WEB_2:
-        required: true
-      REMOTE_USERNAME_WEB_2:
-        required: true
-      REMOTE_PASS_WEB_2:
-        required: true
-      REMOTE_PORT_WEB_2:
-        required: true
 
 jobs:
   deploy:
