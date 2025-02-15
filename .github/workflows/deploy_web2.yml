@@ -6,6 +6,9 @@ on:
       branch:
         required: true
         type: string
+      SCRIPT_RUNNER:
+        required: true
+        type: string
     secrets:
       REMOTE_HOST_WEB_2:
         required: true
@@ -14,8 +17,6 @@ on:
       REMOTE_PASS_WEB_2:
         required: true
       REMOTE_PORT_WEB_2:
-        required: true
-      SCRIPT_RUNNER:
         required: true
 
 jobs:
@@ -31,4 +32,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.REMOTE_PORT }}
           script: |
-            ${{ secrets.SCRIPT_RUNNER }}
+            ${{ inputs.SCRIPT_RUNNER }}
