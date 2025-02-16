@@ -1,14 +1,8 @@
-name: Deploy CSlant Server - W2
+name: Deploy CSlant Server - W2 via Dispatch
 
 on:
-  workflow_call:
-    inputs:
-      branch:
-        required: true
-        type: string
-      SCRIPT_RUNNER:
-        required: true
-        type: string
+  repository_dispatch:
+    types: [trigger-deploy]
 
 jobs:
   deploy:
@@ -24,4 +18,5 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY_WEB_2 }}
           port: ${{ secrets.REMOTE_PORT_WEB_2 }}
           script: |
-            ${{ inputs.SCRIPT_RUNNER }}
+            echo "Running script..."
+            ${{ github.event.client_payload.SCRIPT_RUNNER }}
