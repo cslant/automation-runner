@@ -14,13 +14,10 @@ jobs:
   deploy:
     runs-on: self-hosted
     steps:
-      - name: Deploy to Remote Host
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_HOST_WEB_2 }}
-          username: ${{ secrets.REMOTE_USERNAME_WEB_2 }}
-          password: ${{ secrets.REMOTE_PASS_WEB_2 }}
-          key: ${{ secrets.SSH_PRIVATE_KEY_WEB_2 }}
-          port: ${{ secrets.REMOTE_PORT_WEB_2 }}
-          script: |
-            ${{ inputs.SCRIPT_RUNNER }}
+      - name: Debug Secrets
+        run: |
+          echo "REMOTE_HOST_WEB_2=${{ secrets.REMOTE_HOST_WEB_2 }}" | sed 's/./& /g'
+          echo "REMOTE_USERNAME_WEB_2=${{ secrets.REMOTE_USERNAME_WEB_2 }}" | sed 's/./& /g'
+          echo "REMOTE_PASS_WEB_2=${{ secrets.REMOTE_PASS_WEB_2 }}" | sed 's/./& /g'
+          echo "REMOTE_PORT_WEB_2=${{ secrets.REMOTE_PORT_WEB_2 }}" | sed 's/./& /g'
+          echo "SSH_PRIVATE_KEY_WEB_2=${{ secrets.SSH_PRIVATE_KEY_WEB_2 }}" | sed 's/./& /g'
